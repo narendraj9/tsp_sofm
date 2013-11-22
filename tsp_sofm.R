@@ -63,6 +63,8 @@ getNewWeights <- function(w, x, alpha, norder) {
   return(w)
 }
 
+plot(X)
+points(w)
 # training period
 while (norder >= 0) {
   for (t in 1:epochs) {
@@ -70,20 +72,22 @@ while (norder >= 0) {
         cat ("Epoch #", t," presenting city #", i, "\n")
         w <- getNewWeights(w, X[i,], alpha, norder)
       }
+      plot(X, pch=20, cex=0.8)
+      points(w, col="red", pch="*")
     }
   norder <- (norder - 1)
   alpha <- (alpha - alpha/10)
+
 }
 cityOrder <- rep(0,ncities)
 
 # reading results and plotting the results
-plot(X, xlab="x", ylab="y")
+plot(X, xlab="x", ylab="y", pch='*')
 for (i in 1:ncities) {
   xrep <- matrix(rep(X[i,], ncities), nrow = ncities, byrow = T)
   diff <- (xrep - w)
   # winner node index
   cityOrder[i] <- which.min(apply(diff, 1, norm))
-  points(X[i,1], X[i,2], pch = '*')
 }
 
 # lets label cities in order
