@@ -63,8 +63,8 @@ getNewWeights <- function(w, x, alpha, norder) {
   return(w)
 }
 
-plot(X)
-points(w)
+plot(X, pch=20)
+points(w, pch="*", col="red")
 # training period
 while (norder >= 0) {
   for (t in 1:epochs) {
@@ -72,12 +72,12 @@ while (norder >= 0) {
         cat ("Epoch #", t," presenting city #", i, "\n")
         w <- getNewWeights(w, X[i,], alpha, norder)
       }
-      plot(X, pch=20, cex=0.8)
-      points(w, col="red", pch="*")
     }
   norder <- (norder - 1)
   alpha <- (alpha - alpha/10)
-
+                                        # plot weights and points
+  plot(X, pch=20, cex=0.8)
+  points(w, col="red", pch="*")
 }
 cityOrder <- rep(0,ncities)
 
