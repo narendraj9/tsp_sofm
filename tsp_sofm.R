@@ -9,6 +9,8 @@ alpha <- 0.89
 epochs <- 100
   
 # load info about cities
+# input csv file has three columns, the last of which
+# are coordinates
 cities <- read.csv("cities.csv", header=TRUE)
 ncities <- length(cities[,1])
 
