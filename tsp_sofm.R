@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 # (Class Assignment | Narendra Joshi)
-# (Travelling Salesman Problem Using A SOFM)
+# (Travelling Salesman Problem Using an SOFM)
 
 library(calibrate)
 
