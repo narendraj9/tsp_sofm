@@ -5,7 +5,7 @@
 library(calibrate)
 
 # intial values of parameters
-alpha <- 0.89
+alpha <- 0.08
 epochs <- 100
   
 # load info about cities
@@ -63,7 +63,9 @@ getNewWeights <- function(w, x, alpha, norder) {
   return(w)
 }
 
-plot(X, pch=20)
+# setting parameters for the graph plots
+#par(mfcol=c(3,3))
+plot(X, pch=20, xlab='x', ylab='y')
 points(w, pch="*", col="red")
 # training period
 while (norder >= 0) {
@@ -76,8 +78,9 @@ while (norder >= 0) {
   norder <- (norder - 1)
   alpha <- (alpha - alpha/10)
                                         # plot weights and points
-  plot(X, pch=20, cex=0.8)
+  plot(X, pch=20, cex=0.8, xlab='x', ylab='y')
   points(w, col="red", pch="*")
+  
 }
 cityOrder <- rep(0,ncities)
 
